@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AICompass.Server", "AICompass.Server\AICompass.Server.csproj", "{154D6D45-7D7D-4E9F-962B-0FFD4F20FD4A}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "aicompass.client", "aicompass.client\aicompass.client.esproj", "{C46B0087-BCE6-4D2B-876F-FCD5041409D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{154D6D45-7D7D-4E9F-962B-0FFD4F20FD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154D6D45-7D7D-4E9F-962B-0FFD4F20FD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154D6D45-7D7D-4E9F-962B-0FFD4F20FD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154D6D45-7D7D-4E9F-962B-0FFD4F20FD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46B0087-BCE6-4D2B-876F-FCD5041409D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BFCFD12-19F2-46A8-B355-22650C1364F4}
+	EndGlobalSection
+EndGlobal

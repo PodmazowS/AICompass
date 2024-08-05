@@ -1,0 +1,6 @@
+@AICompass.Server_HostAddress = http://localhost:5208
+
+GET {{AICompass.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
