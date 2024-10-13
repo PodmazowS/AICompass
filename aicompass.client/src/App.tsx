@@ -9,9 +9,19 @@ import Signup from './components/Signup';
 import Contact from './components/Contact';
 import AdminToolList from './components/AdminToolList';
 
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+const PrivateRoute = ({ children, requiredRole }: { children: JSX.Element, requiredRole?: string }) => {
     const token = localStorage.getItem('token');
-    return token ? children : <Navigate to="/login" />;
+    const role = localStorage.getItem('role');
+
+    if (!token) {
+        return <Navigate to="/login" />;
+    }
+
+    if (requiredRole && role !== requiredRole) {
+        return <Navigate to="/" />;
+    }
+
+    return children;
 };
 
 const App: React.FC = () => {
@@ -28,7 +38,7 @@ const App: React.FC = () => {
                 <Route
                     path="/admin/tools"
                     element={
-                        <PrivateRoute>
+                        <PrivateRoute requiredRole="Admin">
                             <AdminToolList />
                         </PrivateRoute>
                     }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AICompass.Server.Models
 {
@@ -11,7 +12,8 @@ namespace AICompass.Server.Models
 		public string Email { get; set; }
 		[Required]
 		public string Password { get; set; }
+		[Required]
+		public string Role { get; set; } // Add Role property
 		public ICollection<Review> Reviews { get; set; }
-
 	}
 }

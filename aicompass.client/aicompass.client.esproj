@@ -10,6 +10,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\interfaces\" />
-    <Folder Include="src\services\" />
   </ItemGroup>
 </Project>
