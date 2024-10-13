@@ -1,0 +1,15 @@
+import React from 'react';
+
+const Login: React.FC = () => {
+    return (
+        <div>
+            <h1>Login Page</h1>
+            <p>Please login to access the admin features.</p>
+            <input type="text" placeholder="Username" />
+            <input type="password" placeholder="Password" />
+            <button>Login</button>
+        </div>
+    );
+};
+
+export default Login;

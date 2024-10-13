@@ -21,6 +21,15 @@ export const createTool = async (tool: Tool): Promise<Tool> => {
     }
 };
 
+export const updateTool = async (id: number, tool: Tool): Promise<void> => {
+    try {
+        await axiosInstance.put(`/Tool/${id}`, tool);
+    } catch (error) {
+        console.error(`Error updating tool with id ${id}:`, error);
+        throw error;
+    }
+};
+
 export const deleteTool = async (id: number): Promise<void> => {
     try {
         await axiosInstance.delete(`/Tool/${id}`);

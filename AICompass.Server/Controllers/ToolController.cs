@@ -73,5 +73,37 @@ namespace AICompassAPI.Controllers
 
 			return NoContent();
 		}
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutTool(int id, Tool tool)
+		{
+			if (id != tool.Id)
+			{
+				return BadRequest();
+			}
+
+			_context.Entry(tool).State = EntityState.Modified;
+
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!ToolExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
+
+			return NoContent();
+		}
+		private bool ToolExists(int id)
+		{
+			return _context.Tools.Any(e => e.Id == id);
+		}
 	}
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getTools, createTool, deleteTool } from '../services/toolService';
+import { getTools, createTool, updateTool, deleteTool } from '../services/toolService';
 import { Tool } from '../interfaces/Tool';
 
 const ToolList: React.FC = () => {
     const [tools, setTools] = useState<Tool[]>([]);
+    const [currentToolId, setCurrentToolId] = useState<number | null>(null);
     const [newTool, setNewTool] = useState<Tool>({ name: '', description: '', imageUrl: '', categoryId: 1 });
 
     useEffect(() => {
@@ -24,9 +25,29 @@ const ToolList: React.FC = () => {
             const createdTool = await createTool(newTool);
             setTools([...tools, createdTool]);
             setNewTool({ name: '', description: '', imageUrl: '', categoryId: 1 });
+            setCurrentToolId(null);
         } catch (error) {
             console.error('Error creating tool:', error);
         }
+    };
+
+    const handleUpdateTool = async () => {
+        if (currentToolId === null) return;
+
+        try {
+            await updateTool(currentToolId, newTool);
+            const updatedTools = tools.map((tool) => (tool.id === currentToolId ? newTool : tool));
+            setTools(updatedTools);
+            setNewTool({ name: '', description: '', imageUrl: '', categoryId: 1 });
+            setCurrentToolId(null);
+        } catch (error) {
+            console.error(`Error updating tool with id ${currentToolId}:`, error);
+        }
+    };
+
+    const handleEditTool = (tool: Tool) => {
+        setCurrentToolId(tool.id!);
+        setNewTool({ name: tool.name, description: tool.description, imageUrl: tool.imageUrl, categoryId: tool.categoryId });
     };
 
     const handleDeleteTool = async (id: number) => {
@@ -45,11 +66,12 @@ const ToolList: React.FC = () => {
                 {tools.map(tool => (
                     <li key={tool.id}>
                         {tool.name} - {tool.description}
+                        <button onClick={() => handleEditTool(tool)}>Edit</button>
                         <button onClick={() => handleDeleteTool(tool.id!)}>Delete</button>
                     </li>
                 ))}
             </ul>
-            <h2>Create New Tool</h2>
+            <h2>{currentToolId ? 'Update Tool' : 'Create New Tool'}</h2>
             <input
                 type="text"
                 placeholder="Name"
@@ -74,7 +96,9 @@ const ToolList: React.FC = () => {
                 value={newTool.categoryId}
                 onChange={(e) => setNewTool({ ...newTool, categoryId: parseInt(e.target.value) })}
             />
-            <button onClick={handleCreateTool}>Create Tool</button>
+            <button onClick={currentToolId ? handleUpdateTool : handleCreateTool}>
+                {currentToolId ? 'Update Tool' : 'Create Tool'}
+            </button>
         </div>
     );
 };
